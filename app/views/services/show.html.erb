@@ -1,0 +1,22 @@
+<p>
+  <strong>Name:</strong>
+  <%= @service.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @service.description %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @service.value %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @service.category.name %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
