@@ -4,6 +4,7 @@ Como instalar o Ruby e o Rails no Ubuntu:
 * https://gorails.com/setup/ubuntu/16.04 (Escolha a versão do Ubuntu no site na hora da instalação)
 
 LEIAM AS CONFIGURAÇÕES ANTES DE INSTALAR
+
 Configurações que eu(Ikaro) estou usando:
 
 * Ruby version - 2.3.1p112
