@@ -1,33 +1,62 @@
-<%= form_for(@service) do |f| %>
+<%= form_for(@service, :html => {:class => 'basic-form basic-form--big'}) do |f| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
 
       <ul>
-      <% @service.errors.full_messages.each do |message| %>
+        <% @service.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="post-a-job__section post-a-job__cta">
+    <h1 class="basic-form__title">
+      Cadastre um novo serviço
+    </h1>
+    <p class="basic-form__description">
+      Preencha os campos abaixo para oferecer um novo serviço!
+    </p>
+    <small class="basic-form__footnote">*Campos obrigatórios</small>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.number_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <section class="post-a-job__nested-sections basic-form__nested-fields">
+    <div class="post-a-job__section post-a-job__field-container post-a-job__field-container--half post-a-job__field-container--stacked basic-form__field__half">
+      <label class="basic-form__label" for="job_phone_id">Nome *</label>
+      <p class="basic-form__hint">
+        Nome do serviço a ser oferecido.
+      </p>
+      <%= f.text_field :name, :class => 'input input--text' %>
+    </div>
+    <div class="post-a-job__section post-a-job__field-container post-a-job__field-container--half post-a-job__field-container--stacked basic-form__field__half">
+      <label class="basic-form__label" for="job_phone_id">Valor *</label>
+      <p class="basic-form__hint">
+        Valor do serviço a ser oferecido.
+      </p>
+      <%= f.number_field :value, :class => 'input' %>
+    </div>
+  </section>
+
+  <section class="post-a-job__section post-a-job__field-container basic-form__field">
+    <label class="basic-form__label" for="job_description">Descrição do serviço</label>
+    <p class="basic-form__hint">
+      Conte mais detalhes sobre o serviço que você oferece
+    </p>
+    <%= f.text_area :description, :class => 'textarea' %>
+  </section>
+
+  <section class="post-a-job__section post-a-job__field-container basic-form__field">
+    <label class="basic-form__label" for="job_cidade_id">Categoria *</label>
+    <p class="basic-form__hint">
+      Em qual dessas categorias o serviço se encaixa?
+    </p>
+    <div class="select">
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: false}, {:class => 'select__input'}) %>
+    </div>
+  </section>
+
+  <section class="post-a-job__section post-a-job__field-container post-a-job__field-container--centered-text">
+    <%= f.submit "Publicar serviço", :class => 'post-a-job__btns__publish' %>
+  </section>
 <% end %>

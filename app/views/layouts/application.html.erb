@@ -1,61 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MundoBebe</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
+  <title>Meu bebê - A seu bebê, nossa prioridade</title>
+  <link rel="stylesheet" media="all" href="new_app.css">
+  <link href="css.css" rel="stylesheet">
+  <link href="landing.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">MundoBeBe</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/categories">Categorias</a></li>
-        <li class="active"><a href="/services">Servicos</a></li>
-      </ul>
-    </div>
+<body> 
+    <header class="app-header">
+      <section class="app-header__main-nav">
+        <div class="app-main-nav">
+          <div class="app-main-nav__container">                  
+            <section class="app-main-nav__logo">
+              <a href="/">
+                <img alt="Logo MundoBeBe" src="/assets/logo.png">
+              </a> 
+            </section>
+            <section class="app-main-nav__searchbar">
+              <div data-react-class="SearchBar" >
+                <form action="/p" method="POST" class="search-bar" data-reactroot="" data-reactid="1" data-react-checksum="-1032308723">
+                  <div class="search-bar__inputs" data-reactid="2">
+                    <input name="search[service]" value="" data-reactid="3" type="hidden">
+                    <input autocomplete="off" class="search-bar__input" placeholder="o que você precisa?" data-reactid="4" type="search">
+                  </div>
+                  <button class="search-bar__submit" data-reactid="9">
+                    <i class="fa fa-search" data-reactid="10"></i>
+                    <span class="search-bar__submit__text" data-reactid="11">Buscar</span>
+                  </button>
+                </form>
+              </div>
+            </section>
+            <section class="app-main-nav__account">
+              <p class="navbar-text pull-right">
+                <% if user_signed_in? %>
+                  Usuario: <strong><%= current_user.email %></strong>.
+                  <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'button button--blue' %> |
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button button--danger'  %>
+                <% else %>
+                  <%= link_to "Cadastre-se", new_user_registration_path, :class => 'button button--green'  %> |
+                  <%= link_to "Login", new_user_session_path, :class => 'button button--lock'  %>
+                <% end %>
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+      <% if user_signed_in? %>
+        <section>
+          <nav class="app-categories-nav">
+            <div class="app-categories-nav__container">
+            <% Category.all.each do |category| %>
+              <%= link_to category.name, category, class:'app-categories-nav__item' %>
+            <% end %>
+            </div>
+          </nav>
+        </section>  
+      <% end %>
+    </header>  
+  
 
-    <p class="navbar-text pull-right">
-			<% if user_signed_in? %>
-			  Logged in as <strong><%= current_user.email %></strong>.
-			  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-			  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-			<% else %>
-			  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-			  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-			<% end %>
-		</p>
-  </div>
-</nav>
+    <section class="search-results">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    
+      <%= yield %>
+   </section>
 
-<div class="container">
-	<% if notice %>
-	  <p class="alert alert-success"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-	  <p class="alert alert-danger"><%= alert %></p>
-	<% end %>
-  <%= yield %>
-</div>
 
-<footer>
-  <div class="container">
+
+
+<footer class="footer">
+  <div class="footer__container">
     The Night Watchers 2017
   </div>
 </footer>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.js"></script>
 
 </body>
 </html>

@@ -1,31 +1,71 @@
-<h1>Listing Services</h1>
+<nav class="breadcrumbs">
+  <span>
+    <a class="breadcrumbs__link" href="/">Página inicial</a>
+    <a class="breadcrumbs__link" href="/services/">Serviços</a>
+  </span>
+  <span class="breadcrumbs__title">
+    Foram encontrados <strong><%= @services.size %> serviços</strong>.
+  </span>
+</nav>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Value</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<aside class="search-results__filters">
+  <form class="new_filters">
+    <div class="search-results__filter">
+      <div class="search-filter">
+        <div class="search-filter__filter">
+          <div class="search-filter__title">
+            Selecione a categoria
+          </div>
+          <div class="search-filter__description">
+            categoria do serviço:
+          </div>
+          <div class="search-filter__select">
+            <div class="select">
+              <%= collection_select(:service, :category_id, Category.all, :id, :name, {prompt: false}, {:class => 'select__input'}) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= link_to "Filtrar",  '/categories', class:'button' %>
+  </form>
+</aside>
 
-  <tbody>
+<section class="search-results__job-results">
+  <div class="job-cards-container">
     <% @services.each do |service| %>
-      <tr>
-        <td><%= service.name %></td>
-        <td><%= service.description %></td>
-        <td><%= service.value %></td>
-        <td><%= service.category.name %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Service', new_service_path %>
+    <div class="job-cards-container__card">
+      <article class="job-search-card">
+        <header>
+          <i class="job-search-card__icon">
+            <img src="/assets/people.png">
+          </i>
+            <%= service.name %>
+          </h2>
+          <p class="job-search-card__posted-at"><%= service.created_at %></p>
+        </header>
+        <main>
+          <section class="job-search-card__section">
+            <h3 class="job-search-card__section-title">
+              <i class="fa fa-info"></i>
+              Descrição
+            </h3>
+            <p class="job-search-card__section-content"><%= service.description %></p>
+          </section>
+          <section class="job-search-card__section">
+            <h3 class="job-search-card__section-title">
+              <i class="fa fa-tags"></i>
+              Categoria
+            </h3>
+            <p class="job-search-card__section-content"><%= service.category.name %></p>
+          </section>
+        </main>
+        <nav class="job-search-card__nav">
+          <%= link_to 'Saiba mais', service, :class => 'job-search-card__nav__button' %>
+        </nav>
+      </article>
+    </div>
+    <% end %>  
+  </div>
+  <%= link_to 'Novo serviço', new_service_path, :class => 'button button--green button--plus'%>
+</section>

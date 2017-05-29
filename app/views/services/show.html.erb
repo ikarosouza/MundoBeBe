@@ -1,22 +1,63 @@
-<p>
-  <strong>Name:</strong>
-  <%= @service.name %>
-</p>
+<main class="job-view">
+	<section class="job-view__section job-view__header">
+		<header class="job-view-header">
+			<h1 class="job-view-header__title"> <%= @service.name %> </h1>
+			<h3 class="job-view-header__posted-at">postada por <%= current_user.email %> em <%= @service.created_at %></h3>
+		</header>
+	</section>
+	<div class="job-view__section">
+		<div class="job-view__section--half job-view__section--stacked">
+			<section class="job-view__content">
+				<section class="job-view-details">
+					<div class="job-view-details__item">
+						<h2 class="job-view-details__item__title">
+							<i class="fa fa-money"></i>
+							Valor
+						</h2>
+						<p class="job-view-details__item__description">
+							R$ <%= @service.value %>
+						</p>
+					</div>
+					<div class="job-view-details__item">
+						<h2 class="job-view-details__item__title">
+							<i class="fa fa-tags"></i>
+							Categoria
+						</h2>
+						<p class="job-view-details__item__description">
+							<%= @service.category.name %>
+						</p>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="job-view__section--half job-view__section--stacked">
+			<section class="job-view__content">
+				<section class="job-view-details">
+					<div class="job-view-details__item">
+						<h2 class="job-view-details__item__title">
+							<i class="fa fa-info-circle"></i>
+							Descrição
+						</h2>
+						<p class="job-view-details__item__description">
+							<%= @service.description %>
+						</p>
+					</div>
+				</section>
+			</section>
+		</div>
+	</div>
+	<section class="job-view__section">
+		<h1 class="job-view__title">Interessado nesse serviço?</h1>
+		<p class="job-view__description">
+			Não perca tempo e solicite já!
+		</p>
+		<div class="job-view__section--flex">
+			<form class="edit_job" id="edit_job_553" action="/servicos/553/candidatar-se" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="wAJWkl1LydRr1fAcps493EUuO98JwPKNchX4vrB1u51kYg6VD2XRUlgWU34/dFo3Hc+vvfOQ05cvAoYKhBpvAA==">
+			<button name="button" type="submit" class="job-view__section--flex__button">Solicitar serviço</button>
+			</form> </div>
+		</section>
 
-<p>
-  <strong>Description:</strong>
-  <%= @service.description %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @service.value %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @service.category.name %>
-</p>
-
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+		<%= link_to 'Editar', edit_service_path(@service), :class => 'button button--blue' %>
+		<%= link_to 'Excluir', @service, method: :delete, data: { confirm: 'Tem certeza que deseja deletar este item?' }, class:'button button--danger'%>
+		<%= link_to 'Voltar', services_path, :class => 'button button--green' %>
+	</main>

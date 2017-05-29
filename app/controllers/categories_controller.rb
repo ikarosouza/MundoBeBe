@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @services = Service.where(category: Category.find(params[:id])).all
   end
 
   # GET /categories/new
