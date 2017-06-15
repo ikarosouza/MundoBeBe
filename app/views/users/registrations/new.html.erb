@@ -1,0 +1,42 @@
+<main class="login-form">
+	<h2>Cadastro</h2>
+
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => 'basic-form'}) do |f| %>
+	<%= devise_error_messages! %>
+
+	<div class="basic-form__field">
+		<%= f.label :email %><br />
+		<%= f.email_field :email, autofocus: true, :class => 'input input--text' %>
+	</div>
+
+	<div class="basic-form__field">
+		<%= f.label :username, "Nome" %><br />
+		<%= f.text_field :username, autofocus: true, :class => 'input input--text' %>
+	</div>
+
+	<div class="basic-form__field">
+		<%= f.label :description, "Descrição" %><br />
+		<%= f.text_area :description, :class => 'textarea' %>
+	</div>
+
+	<div class="basic-form__field">
+		<%= f.label "Senha" %>
+		<% if @minimum_password_length %>
+		<em>(Minimo de <%= @minimum_password_length %> caracteres)</em>
+		<% end %><br />
+		<%= f.password_field :password, autocomplete: "off", :class => 'input input--text' %>
+	</div>
+
+	<div class="basic-form__field">
+		<%= f.label "Confirmar senha" %><br />
+		<%= f.password_field :password_confirmation, autocomplete: "off", :class => 'input input--text' %>
+	</div>
+
+	<div class="basic-form__field">
+		<%= f.submit "Cadastra-se", :class => 'button button--green login-form__submit'%>
+	</div>
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+
+</main>

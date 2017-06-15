@@ -1,0 +1,31 @@
+<main class="login-form">
+  <h2>Login</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => {:class => 'basic-form'}) do |f|%>
+  <div class="basic-form__field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, :class => 'input input--text' %>
+  </div>
+
+  <div class="basic-form__field">
+    <%= f.label "Senha" %><br />
+    <%= f.password_field :password, autocomplete: "off", :class => 'input input--text' %>
+
+
+    <% if devise_mapping.rememberable? -%>
+    <div class="checkbox login-form__remember basic-form__detail basic-form__link-left">
+      <%= f.check_box :remember_me %>
+      <%= f.label "Lembrar-me" %>
+    </div>
+    <% end -%>
+
+    <div class="basic-form__detail-container">
+      <%= render "devise/shared/links" %>
+    </div>
+    
+  </div>
+  <%= f.submit "Login", :class => 'button login-form__submit' %>
+  <% end %>
+
+  
+</main>

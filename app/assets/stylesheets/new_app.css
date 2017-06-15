@@ -13908,7 +13908,7 @@ body.ReactModal__Body--open {
 }
 .profile__reputation__rating__value {
     text-align: center;
-    margin: 0;
+    margin: 1;
     font-size: 5em;
     color: #3da6a5;
     font-weight: 300;
@@ -15487,7 +15487,7 @@ body.ReactModal__Body--open {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-    padding-top: 20px
+    padding: 20px 0
 }
 .search-results::after {
     clear: both;

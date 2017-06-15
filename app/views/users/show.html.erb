@@ -1,0 +1,108 @@
+<main class="profile">
+	<header class="profile__header">
+		<div class="profile__container">
+			<div class="profile__header__avatar">
+				<div class="avatar avatar--medium avatar--parrot">
+					<%= image_tag current_user.avatar.url(:medium) %>
+				</div>
+			</div>
+			<div class="profile__header__user-info">
+				<h1> <%= @user.username %></h1>
+				<ul class="profile__header__user-info__services">
+					<li class="profile__header__user-info__services__item tooltipstered" data-tooltip="" data-side="bottom">
+						<%= @user.email %>
+					</li>
+				</ul>
+			</div>
+			<div class="profile__header__contact-info">
+				<div class="profile__header__contact-info__button-wrapper">
+					<a href="#lightbox-login" class="profile__header__contact-button" signedin="no" data-module="handlers/analytics-events" data-analytics-events="" data-track-click-once="Signed Out Contact Request">
+						Entre em contato
+					</a>
+				</div>
+				<div class="profile__header__metrics">
+					<ul class="profile__header__metrics__list">
+						<li class="profile__header__metrics__list__item tooltipstered" data-tooltip="" data-side="left">
+							<a class="fa fa-heart-o" href="#lightbox-login"></a>
+							<span class="profile__header__metrics__list__item__count-bubble">
+								0
+							</span>
+						</li>
+						<li class="profile__header__metrics__list__item tooltipstered" data-tooltip="" data-side="left">
+							<i class="fa fa-eye"></i>
+							<span class="profile__header__metrics__list__item__count-bubble">
+								5
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="profile__header__contact-modal"></div>
+	</header>
+	<div class="profile__container">
+		<aside class="profile__reputation">
+			<button class="profile__section-toggler" data-module="ui/section-toggler" data-section-toggler="" data-section=".profile__reputation">
+				<i class="fa fa-chevron-down"></i>
+				Reputação do profissional
+			</button>
+			<div class="profile__section-toggler__wrapper">
+				<div class="profile__reputation__rating">
+					<h4 class="profile__subtitle">
+						Avaliação
+					</h4>
+					<h2 class="profile__reputation__rating__value">
+						0.0
+					</h2>
+					<ul class="profile__reputation__rating__stars" data-module="ui/rating-stars" data-rating-stars="" data-rating="0.0">
+						<li class="fa fa-star-o"></li><li class="fa fa-star-o"></li><li class="fa fa-star-o"></li><li class="fa fa-star-o"></li><li class="fa fa-star-o"></li></ul>
+					</div>
+					<div data-react-class="Testimonies" data-react-props="{&quot;initialTestimonies&quot;:[],&quot;action&quot;:&quot;/testimonies&quot;,&quot;currentUser&quot;:null,&quot;testimoniesPath&quot;:&quot;/perfis/simone-fonseca/depoimentos&quot;,&quot;profileUserId&quot;:38748}"><div class="profile__reputation__testimonies" data-reactroot="" data-reactid="1" data-react-checksum="-894775678"><h4 class="profile__subtitle" data-reactid="2">Depoimentos</h4><div class="profile-info__testimonies__empty" data-reactid="3">Esse profissional ainda não recebeu depoimentos</div><noscript data-reactid="4"></noscript><noscript data-reactid="5"></noscript><div class="profile__reputation__testimonies__cta" data-reactid="6">Escreva um depoimento para esse profissional</div><a href="#lightbox-login" class="profile__reputation__testimonies__button" data-reactid="7">Escrever</a></div></div>
+				</div>
+			</aside>
+			<section class="profile__about">
+				<button class="profile__section-toggler" data-module="ui/section-toggler" data-section-toggler="" data-section=".profile__about">
+					<i class="fa fa-chevron-down"></i>
+					Sobre o profissional
+				</button>
+				<div class="profile__section-toggler__wrapper">
+					<div class="profile__about__specialities">
+						<h4 class="profile__subtitle">
+							Especialidades
+						</h4>
+						<ul class="profile__about__specialities__list">
+							<li class="profile__about__specialities__list__item">
+								<img class="profile__about__specialities__lsit__item__icon" src="https://s3.amazonaws.com/bicosonline/servicos/36/icone_selecionados/0e2bf1d1689e28f856788aa470166d2e3dbbdbc6.png?1447959866" alt="0e2bf1d1689e28f856788aa470166d2e3dbbdbc6">
+								<h3>Serviços</h3>
+								<% @services.each do |service| %>
+									<%= link_to service.name, service %> 
+								<% end %>
+							</li>
+						</ul>
+					</div>
+					<div class="profile__about__description">
+						<h4 class="profile__subtitle">
+							Resumo
+						</h4>
+
+					</div>
+				</div>
+			</section>
+			<aside class="profile__availability">
+				<button class="profile__section-toggler" data-module="ui/section-toggler" data-section-toggler="" data-section=".profile__availability">
+					<i class="fa fa-chevron-down"></i>
+					Disponibilidade do profissional
+				</button>
+				<div class="profile__section-toggler__wrapper">
+					<div class="profile__availability__locations">
+						<h4 class="profile__subtitle">
+							<i class="fa fa-map-marker"></i>
+							Locais
+						</h4>
+						<ul class="profile__availability__locations__list">
+						</ul>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</main>

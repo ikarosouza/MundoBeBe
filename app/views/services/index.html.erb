@@ -1,45 +1,46 @@
-<nav class="breadcrumbs">
-  <span>
-    <a class="breadcrumbs__link" href="/">Página inicial</a>
-    <a class="breadcrumbs__link" href="/services/">Serviços</a>
-  </span>
-  <span class="breadcrumbs__title">
-    Foram encontrados <strong><%= @services.size %> serviços</strong>.
-  </span>
-</nav>
+<section class="search-results">
+  <nav class="breadcrumbs">
+    <span>
+      <a class="breadcrumbs__link" href="/">Página inicial</a>
+      <a class="breadcrumbs__link" href="/services/">Serviços</a>
+    </span>
+    <span class="breadcrumbs__title">
+      Foram encontrados <strong><%= @services.size %> serviços</strong>.
+    </span>
+  </nav>
 
-<aside class="search-results__filters">
-  <form class="new_filters">
-    <div class="search-results__filter">
-      <div class="search-filter">
-        <div class="search-filter__filter">
-          <div class="search-filter__title">
-            Selecione a categoria
-          </div>
-          <div class="search-filter__description">
-            categoria do serviço:
-          </div>
-          <div class="search-filter__select">
-            <div class="select">
-              <%= collection_select(:service, :category_id, Category.all, :id, :name, {prompt: false}, {:class => 'select__input'}) %>
+  <aside class="search-results__filters">
+    <form class="new_filters">
+      <div class="search-results__filter">
+        <div class="search-filter">
+          <div class="search-filter__filter">
+            <div class="search-filter__title">
+              Selecione a categoria
+            </div>
+            <div class="search-filter__description">
+              categoria do serviço:
+            </div>
+            <div class="search-filter__select">
+              <div class="select">
+                <%= collection_select(:service, :category_id, Category.all, :id, :name, {prompt: false}, {:class => 'select__input'}) %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <%= link_to "Filtrar",  '/categories', class:'button' %>
-  </form>
-</aside>
+      <%= link_to "Filtrar",  '/categories', class:'button' %>
+    </form>
+  </aside>
 
-<section class="search-results__job-results">
-  <div class="job-cards-container">
-    <% @services.each do |service| %>
-    <div class="job-cards-container__card">
-      <article class="job-search-card">
-        <header>
-          <i class="job-search-card__icon">
-            <img src="/assets/people.png">
-          </i>
+  <section class="search-results__job-results">
+    <div class="job-cards-container">
+      <% @services.each do |service| %>
+      <div class="job-cards-container__card">
+        <article class="job-search-card">
+          <header>
+            <i class="job-search-card__icon">
+              <img src="/assets/people.png">
+            </i>
             <%= service.name %>
           </h2>
           <p class="job-search-card__posted-at"><%= service.created_at %></p>
@@ -68,4 +69,5 @@
     <% end %>  
   </div>
   <%= link_to 'Novo serviço', new_service_path, :class => 'button button--green button--plus'%>
+</section>
 </section>

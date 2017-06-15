@@ -1,30 +1,88 @@
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<main class="search-results">
+  <nav class="breadcrumbs">
+    <span>
+      <a class="breadcrumbs__link" href="/">Página inicial</a>
+      <a class="breadcrumbs__link" href="/categories/">Categorias</a>
+      <%= link_to @category.name, @category, class:'breadcrumbs__link' %>
+    </span>
+    <span class="breadcrumbs__title">
+      <%= @services.size %> <strong>serviços</strong> encontrados
+    </span>
+  </nav>
 
-Serviços
+  <aside class="search-results__filters">
+    <div class="search-results__filters__title-container">
+      <h3 class="search-results__filters__title">Filtros</h3>
+    </div>
+    <form class="search-results__filters__form" id="results_new_search" action="/p" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="5Xvxus+64LjiBXtfnhd9q0K7VrtaNKCtLe46aPnyBO+iee5cck98hXUOFUF640oi1mrcuCdgxMmZiMgwjPN8Mg==">
+      <div class="search-results__filter">
+        <div class="search-filter">
+          <div class="search-filter__filter">
+            <label for="results_search_service">
+              <div class="search-filter__title">
+                Selecione o serviço
+              </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Value</th
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+            </label>
+            <div class="search-filter__select">
+              <div class="select">
+                <%= collection_select(:service, :category_id, Category.all, :id, :name, {prompt: false}, {:class => 'select__input'}) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="submit" name="commit" value="Encontrar profissionais" class="button button--oil-blue">
+    </form> 
+  </aside>
+  <section class="search-results__results">
+    <div class="user-cards-container">
+      <% @services.each do |service| %>
+      <div class="user-cards-container__card">
+        <div class="user-card">
+          <div class="user-card__header">
+            <div class="user-card__header__avatar avatar avatar--small avatar--parrot">              
+              <%= link_to image_tag(service.user.avatar.url(:thumb)), service.user, :class => 'user-card__header__avatar__image' %>
+            </div>
+            <h3 class="user-card__header__title">              
+              <%= link_to service.user.username, service.user, :class => 'user-card__header__name' %>
+            </h3>
+            <div class="user-card__header__rating tooltipstered">
+              <i class="user-card__header__star fa fa-star-o" data-reactid="12"></i>
+              <i class="user-card__header__star fa fa-star-o" data-reactid="13"></i>
+              <i class="user-card__header__star fa fa-star-o" data-reactid="14"></i>
+              <i class="user-card__header__star fa fa-star-o" data-reactid="15"></i>
+              <i class="user-card__header__star fa fa-star-o" data-reactid="16"></i>
+            </div>
+          </div>
+          <div class="user-card__body">
+            <div class="user-card__body__section">
+              <h3 class="user-card__body__section__title">Serviço</h3>
+              <span class="user-card__body__section__content "> <%= service.name %> </span>
+            </div>
+          </div>
+          <div class="user-card__body">
+            <div class="user-card__body__section">
+              <h3 class="user-card__body__section__title">Descriçao</h3>
+              <span class="user-card__body__section__content "> <%= service.description %> </span>
+            </div>
+          </div>
+          <div class="user-card__footer">
+            <div class="user-card__footer__action-buttons">              
+              <%= link_to service.user, :class => "user-card__footer__action-buttons__button" do %>
+              <i class="fa fa-user"></i>
+              <span class="user-card__footer__action-buttons__button__description">Visualizar perfil</span>
+              <% end %>
+              <%= link_to service, :class => "user-card__footer__action-buttons__button" do %>
+              <i class="fa fa-briefcase"></i>
+              <span class="user-card__footer__action-buttons__button__description">Visualizar serviço</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </section>
 
-  <tbody>
-    <% @services.each do |service| %>
-      <tr>
-        <td><%= service.name %></td>
-        <td><%= service.description %></td>
-        <td><%= service.value %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'Editar', edit_category_path(@category) %> |
-<%= link_to 'Voltar', categories_path %>
+</main>

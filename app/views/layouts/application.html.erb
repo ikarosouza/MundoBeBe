@@ -5,6 +5,8 @@
   <link rel="stylesheet" media="all" href="new_app.css">
   <link href="css.css" rel="stylesheet">
   <link href="landing.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Signika:300,400" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="https://d10lpsik1i8c69.cloudfront.net/css/reset.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -36,7 +38,7 @@
             <section class="app-main-nav__account">
               <p class="navbar-text pull-right">
                 <% if user_signed_in? %>
-                  Usuario: <strong><%= current_user.email %></strong>.
+                  Usuario: <strong><%= link_to current_user.username, current_user %></strong>.
                   <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'button button--blue' %> |
                   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button button--danger'  %>
                 <% else %>
@@ -62,7 +64,7 @@
     </header>  
   
 
-    <section class="search-results">
+    <section>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>

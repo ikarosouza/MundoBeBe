@@ -1,43 +1,97 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="my-account">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <aside class="my-account__sidebar">
+    <aside class="account-sidebar">
+      <a href="" class="account-sidebar__avatar avatar avatar--medium avatar--camera">
+        
+      </a>
+
+      
+     <div class="account-sidebar__name">
+      <%= current_user.username %>
+    </div>
+    <div class="account-sidebar__menu">
+      <div class="account-sidebar__menu__item ">
+        <i class="account-sidebar__menu__icon user-menu-icon user-menu-icon--my_profile"></i>
+        <%= link_to "Meu perfil", current_user %>
+      </div>
+      <div class="account-sidebar__menu__item ">
+        <i class="account-sidebar__menu__icon user-menu-icon user-menu-icon--messages"></i>
+        <a href="/minha-conta/chat">Mensagens</a>
+      </div>
+      <div class="account-sidebar__menu__item ">
+        <i class="account-sidebar__menu__icon user-menu-icon user-menu-icon--posted_jobs"></i>
+        <a href="/services">Serviços publicados</a>
+      </div>
+    </div>
+  </aside>
+</aside>
+<section class="my-account__content my-account__content--side-six-columns">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class => 'basic-form basic-form--big' }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="basic-form__field">
+    <label class="basic-form__label"> Nome </label>
+    <p class="basic-form__hint">
+    </p>
+    <%= f.text_field :username, autofocus: true, :class => 'input input--text'%>
+  </div>
+
+  <div class="basic-form__field">
+    <label class="basic-form__label"> Email </label>
+    <p class="basic-form__hint">
+      Digite um email válido
+    </p>
+    <%= f.email_field :email, autofocus: true, :class => 'input input--text'%>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Aguardando confirmação de email for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="basic-form__field">
+    <label class="basic-form__label"> Descrição </label>
+    <p class="basic-form__hint">
+      Escreve uma breve descrição sobre o seu atendimento
+    </p>
+    <%= f.text_area :description, :class => 'textarea' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="basic-form__field">
+    <label class="basic-form__label"> Nova senha </label>
+    <p class="basic-form__hint">
+      Deixe em branco caso não queira alterar a senha
+    </p>
+    <%= f.password_field :password, autocomplete: "off", :class => 'input input--text'%>
+    <em>(Minimo de <%= @minimum_password_length %> caracteres)</em>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+  <div class="basic-form__field">
+    <label class="basic-form__label"> Confirme a nova senha </label>
+    <p class="basic-form__hint">
+    </p>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'input input--text'%>
+  </div>
+
+  <div class="basic-form__field">
+    <label class="basic-form__label"> Senha atual </label>
+    <p class="basic-form__hint">
+      Precisamos de sua senha atual para confirmar as alterações
+    </p>
+    <%= f.password_field :current_password, autocomplete: "off", :class => 'input input--text'%>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Atualizar", :class => 'button' %>
   </div>
-<% end %>
+  <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <h3>Cancelar conta</h3>
 
-<%= link_to "Back", :back %>
+  <p>Insatisfeito? <%= button_to "Cancele minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, :class => 'button button--warning'%></p>
+
+  <%= link_to "Voltar", :back %>
+</section>
+
+</section>
