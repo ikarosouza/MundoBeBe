@@ -1,27 +1,31 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Como instalar o Ruby e o Rails no Ubuntu:
+* https://gorails.com/setup/ubuntu/16.04 (Escolha a versão do Ubuntu no site na hora da instalação)
 
-Things you may want to cover:
+LEIAM AS CONFIGURAÇÕES ANTES DE INSTALAR
 
-* Ruby version
+Configurações que eu(Ikaro) estou usando:
 
-* System dependencies
+* Ruby version - 2.3.1p112
 
-* Configuration
+* Rails version - 4.2.6
 
-* Database creation
+* INSTALEM O GIT
 
-* Database initialization
+* Por padrão o Rails usa sqlite3, eu não mudei isso então podem pular a parte da instalação do bando de dados
 
-* How to run the test suite
+Tudo é via terminal, então pra rodar o sistema usem os seguintes comandos
+Iniciando o sistema:
 
-* Services (job queues, cache servers, search engines, etc.)
+* No primeiro acesso usem 'bundle install' pra instalar todas as dependências
 
-* Deployment instructions
+* Usem nessa ordem os comandos 'rake db:create' >> 'rake db:migrate' >> 'rake db:seed' (Isso vai criar o banco, as tabelas e popular com algumas informações que eu pré cadastrei, já existe um usuario com email: ikarolp@hotmail.com e senha: 123456)
 
-* ...
+* Para iniciar o servidor usem 'rails s' ou 'rails server'
+
+* O endereço para acessar a aplicaçao é http://localhost:3000/
+
 
 
 Please feel free to use a different markup language if you do not plan to run
