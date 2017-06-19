@@ -29,6 +29,8 @@ gem 'simple_form'
 
 gem "paperclip", "~> 5.0.0"
 
+gem 'seed_dump', '~> 3.2', '>= 3.2.4'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
