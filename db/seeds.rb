@@ -4,12 +4,27 @@ User.create!([
   {email: "ikarolp@hotmail.com", password: "123456", username: "Ikaro Souza", rating: 3.4, description: "", phone: "84 99999-9999", avatar_file_name: "Chansey-logo.png", avatar_content_type: "image/png"}
 ])
 Category.create!([
-  {name: "Saude"},
-  {name: "Educação"},
-  {name: "Alimentação"},
-  {name: "Produtos"}
+  {name: "Produtos - Alimentação"},
+  {name: "Produtos - Brinquedos"},
+  {name: "Produtos - Calçados"},  
+  {name: "Produtos - Enxoval"},
+  {name: "Produtos - Higiene"},
+  {name: "Produtos - Móveis"},
+  {name: "Produtos - Passeio"},  
+  {name: "Produtos - Roupas"},  
+  {name: "Serviço - Aulas Particulares"},
+  {name: "Serviço - Babá"},
+  {name: "Serviço - Festas"},  
+  {name: "Serviço - Fotos"},
+  {name: "Serviço - Serviço Hospitalar"},
+  {name: "Serviço - Transporte"}  
 ])
 Service.create!([
-  {name: "Babá", description: "Serviço de cuidados de bebes", value: 100, category_id: 1, user_id: 1},
+  {name: "Babá", description: "Serviço de cuidados de bebes", value: 100, category_id: 10, user_id: 1},
+  {name: "Transporte Escolar", description: "Serviço de transporte de crianças para suas escolas no bairro de Lagoa Nova", value: 100, category_id: 14, user_id: 3},
+  {name: "Babá", description: "Serviço de cuidados de bebes", value: 100, category_id: 10, user_id: 1},
+  {name: "Transporte Escolar", description: "Serviço de transporte de crianças para suas escolas no bairro de Lagoa Nova", value: 100, category_id: 14, user_id: 3},
+  {name: "Babá", description: "Serviço de cuidados de bebes", value: 100, category_id: 10, user_id: 1},
+  {name: "Transporte Escolar", description: "Serviço de transporte de crianças para suas escolas no bairro de Lagoa Nova", value: 100, category_id: 14, user_id: 3},
   {name: "Outro serviço", description: "SUHAUSHAUSHAUSHAUSHAUSHAU", value: 100, category_id: 2, user_id: 3}
 ])
