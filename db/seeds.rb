@@ -39,6 +39,6 @@ Service.create!([
   {name: "Delivery Papinha Natural", description: "Entregamos papinha natural para o seu bebê.", value: 100, category_id: 1, user_id: 10},
   {name: "Delivery Roupinha", description: "Não está fácil sair para comprar roupas para o bebê? Iremos na sua casa com várias opções de roupinhas.", value: 100, category_id: 8, user_id: 10},
   {name: "Espaço Mamãe&Bebê - Workshops", description: "Enquanto os pais se informam, os bebês e as crianças podem se divertir brincando com a surpervisão de profissionais capacitados.", value: 100, category_id: 15, user_id: 10},
-  {name: "Fotografia - Book Newborn", description: "Album de Fotografia ", value: 100, category_id: 12, user_id: 10},
+  {name: "Fotografia - Book Newborn", description: "Album de Fotografia ", value: 100, category_id: 12, user_id: 10}
   
 ])
