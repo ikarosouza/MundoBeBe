@@ -25,7 +25,7 @@ Category.create!([
   {name: "Serviço - Festas"},  
   {name: "Serviço - Fotos"},
   {name: "Serviço - Serviço Hospitalar"},
-  {name: "Serviço - Transporte"}  
+  {name: "Serviço - Transporte"}, 
   {name: "Serviço - Outros"}  
 ])
 
